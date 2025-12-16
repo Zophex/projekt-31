@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stylowanie list</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f9;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+      
+        .image-list {
+            list-style-type: none; 
+            padding-left: 0;
+        }
+        .image-list li {
+            position: relative;
+            padding-left: 30px; 
+            margin-bottom: 5px;
+            border-bottom: 1px dotted #ccc;
+        }
+        .image-list li::before {
+            content: ""; 
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+      
+            background-image: url('icon.jpg'); 
+            background-size: cover;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+
+        .colored-list-container {
+    
+            background-color: #e6f7ff; 
+            color: #000; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .colored-list-container li {
+        
+            color: #d9534f;
+     
+            background-color: #f2dede; 
+            margin-bottom: 5px;
+            padding: 5px;
+            border-left: 5px solid #d9534f; 
+        }
+        .colored-list-container li:nth-child(even) {
+       
+            color: #007bff; 
+            background-color: #cfe2ff;
+            border-left-color: #007bff;
+        }
+
+   
+        .outside-list {
+            list-style-position: outside;
+            border: 1px dashed #007bff; 
+            margin-left: 40px;
+            padding-left: 0;
+        }
+        .inside-list {
+            list-style-position: inside;
+            border: 1px dashed #28a745; 
+            margin-left: 40px;
+            padding-left: 0;
+        }
+
+   
+        .no-bullet-list {
+            list-style-type: none; 
+            padding-left: 0; 
+            margin-left: 0;
+        }
+      
+        .shorthand-list {
+        
+            list-style: square inside none;
+            border: 1px dashed #6f42c1;
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Wszystkie Zadania Dotyczące List HTML/CSS</h1>
+    
+    <section>
+        <h2>1. Standardowe Typy Punktorów</h2>
+        
+        <h3>Lista Nieuporządkowana (UL)</h3>
+        <ul>
+            <li>Punktor domyślny: kropka (disc)</li>
+            <li>Element drugi</li>
+            <li>Element trzeci</li>
+        </ul>
+
+        <h3>Lista Uporządkowana (OL) - Cyfry</h3>
+        <ol>
+            <li>Krok 1 (domyślny typ)</li>
+            <li>Krok 2</li>
+        </ol>
+
+        <h3>Lista Uporządkowana (OL) - Litery Rzymskie</h3>
+        <ol type="I">
+            <li>Rozdział I</li>
+            <li>Rozdział II</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>2. Lista ze Zdjęciem zamiast Punktora</h2>
+        <p>Punktory są zastąpione obrazkiem PNG/SVG za pomocą CSS (`::before`).</p>
+        <ul class="image-list">
+            <li>Element z własnym, graficznym punktorem (ikona zaznaczenia).</li>
+            <li>Dzięki CSS można kontrolować rozmiar i pozycję obrazka.</li>
+            <li>To jest element trzeci.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. Pozycjonowanie Punktora (`list-style-position`)</h2>
+        <p>Ta lista ma ustawione `outside` (domyślnie). Punktor jest na zewnątrz bloku tekstowego.</p>
+        <ul class="outside-list">
+            <li>Dłuższy tekst w elemencie listy. Gdy tekst zawija się do następnej linii, jest on wyrównany do lewej, a punktor pozostaje w swojej pierwotnej pozycji.</li>
+        </ul>
+        
+        <p>Ta lista ma ustawione `inside`. Punktor jest wewnątrz bloku tekstowego.</p>
+        <ul class="inside-list">
+            <li>Dłuższy tekst w elemencie listy. Gdy tekst zawija się do następnej linii, zaczyna się bezpośrednio po punktorze, co tworzy większe wcięcie.</li>
+        </ul>
+        
+    </section>
+
+    <section>
+        <h2>4. Lista z Całkowicie Usuniętym Punktorem</h2>
+        <p>Użyto właściwości `list-style-type: none;` oraz zresetowano wcięcie.</p>
+        <ul class="no-bullet-list">
+            <li>Element bez żadnego symbolu punktora.</li>
+            <li>Idealne do tworzenia poziomych menu nawigacyjnych.</li>
+            <li>Element trzeci.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Skrócony Zapis Właściwości Punktora (`list-style`)</h2>
+        <p>Zapis skrócony: `list-style: square inside none;`</p>
+        <ul class="shorthand-list">
+            <li>Ustawienie typu (`square`), pozycji (`inside`) i obrazu (`none`) w jednej linii.</li>
+            <li>Upraszcza kod CSS i jest łatwiejsze do czytania.</li>
+            <li>Element trzeci.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>6. Nadanie Kolorów Listom i Elementom Listy</h2>
+        <p>Właściwość `color` nadaje kolor tekstu i punktorów. `background-color` tło bloków.</p>
+        <ul class="colored-list-container">
+            <li>Element nieparzysty (tło czerwone, tekst czerwony, punktor czerwony).</li>
+            <li>Element parzysty (tło niebieskie, tekst niebieski, punktor niebieski).</li>
+            <li>Element nieparzysty.</li>
+            <li>Element parzysty.</li>
+        </ul>
+    </section>
+
+</body>
+</html>
